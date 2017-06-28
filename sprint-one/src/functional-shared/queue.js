@@ -17,11 +17,12 @@ queueMethods.enqueue = function(value) {
 
 queueMethods.dequeue = function() {
 	if (this.currentSize > 0) {
-		var temp = this[0]
+		var temp = this[0];
 		for (var i = 0; i < this.currentSize-1; i++) {
 			this[i] = this[i+1];
 		}
 		this.currentSize--;
+		delete this[this.currentSize];
 		return temp;
 	}
 	return null;

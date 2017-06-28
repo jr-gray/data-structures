@@ -4,26 +4,23 @@ var Stack = function() {
   this.currentSize = 0;
 };
 
-Stack.prototype = {
+Stack.prototype.push = function(value) {
+	this[this.currentSize] = value;
+	this.currentSize++;
+}
 
-	push : function(value) {
-		this[this.currentSize] = value;
-		this.currentSize++;
-	},
-
-	pop : function() {
-		if (this.currentSize > 0) {
-      this.currentSize--;
-      var temp = this[this.currentSize];
-      delete this[this.currentSize];
-      return temp;
-		}
-		return null;
-	},
-
-	size : function() {
-		return this.currentSize;
+Stack.prototype.pop = function() {
+	if (this.currentSize > 0) {
+    this.currentSize--;
+    var temp = this[this.currentSize];
+    delete this[this.currentSize];
+    return temp;
 	}
+	return null;
+};
+
+Stack.prototype.size = function() {
+	return this.currentSize;
 };	
 
 
