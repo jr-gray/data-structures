@@ -14,11 +14,13 @@ var Queue = function() {
 
   someInstance.dequeue = function() {
     if (size > 0) {
-      delete storage[0];
-      for (var i = 1; i <= size; i++) {
-        Object.defineProperty(storage, i-1, Object.getOwnPropertyDescriptor(storage, i));
+      var temp = storage[0]
+      for (var i = 0; i < size-1; i++) {
+        storage[i] = storage[i+1];
       }
+      delete storage[size-1];
       size--;
+      return temp;
     }
     return null;
   };
@@ -29,28 +31,3 @@ var Queue = function() {
 
   return someInstance;
 };
-
-
-
-  Object.defineProperty(storage, i-1,
-      Object.getOwnPropertyDescriptor(storage, i));
-
-
-// { 0 : 'bob', -> delete
-//   1 : 'jim', -> 
-//   2 : 'joe',
-//   3 : 'sue'}
-
-// size = 4
-
-// { 1 : 'jim', 
-//   2 : 'joe',
-//   3 : 'sue'}
-
-// dequeue 
-
-// { 0 : 'jim',
-//   1 : 'joe',
-//   2 : 'sue'}
-
-// size = 3
