@@ -30,6 +30,15 @@ Graph.prototype.removeNode = function(node) {
 		  this.nodes.splice(i, 1);
 	  }
 	}
+
+	if (this.edges.length > 0) {
+		for (var i = 0; i < this.edges.length; i++) {
+			if (this.edges[i].indexOf(node) > -1) {
+				this.removeEdge(this.edges[i][0], this.edges[i][1]);
+			}
+		}	
+	}
+	
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
@@ -69,6 +78,11 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
+	if (this.nodes.length > 0) {
+		for (var i = 0; i < this.nodes.length; i++) {
+			cb(this.nodes[i]);
+		}
+	}
 };
 
 /*
