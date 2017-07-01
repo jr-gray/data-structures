@@ -17,8 +17,6 @@ var LinkedList = function() {
     }
   };
 
-
-
   list.removeHead = function() {
     if (list.head !== null) {
       var temp = list.head.next;

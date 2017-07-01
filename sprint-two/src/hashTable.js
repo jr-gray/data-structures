@@ -8,7 +8,12 @@ HashTable.prototype.insert = function(k, v) {
   var bucket = this._storage.get(index); // bucket is undefined if nothing has been inserted, else it's an array of arrays.
 
   if (Array.isArray(bucket)) {
-    this.remove(k)
+    for (var i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] === k) {
+        bucket[i][1] = v;
+        return;
+      }
+    }
   	bucket.push([k, v]);
   } else {
     this._storage.set(index, [[k, v]]);
@@ -33,6 +38,7 @@ HashTable.prototype.remove = function(k) {
   for (var i = 0; i < bucket.length; i++) {
   	if (bucket[i][0] === k) {
   		bucket[i].splice(i, 1);
+      return;
   	}
   }
 };
@@ -49,5 +55,3 @@ HashTable.prototype.remove = function(k) {
 
  HashTable remove: Same as the two above.
  */
-
-
