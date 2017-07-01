@@ -8,12 +8,22 @@ var LinkedList = function() {
       list.head = Node(value);
       list.tail = Node(value);
     } else {
+      
       var current = list.head;
       while (current.next) {
         current = current.next;
       }
       current.next = Node(value);
       list.tail = current.next;
+
+      /* tried to implement following to make addToTail constant time complexity instead of linear
+ 
+      var current = list.tail;
+      current.next = Node(value);
+      list.tail = current.next;
+
+      */
+
     }
   };
 
@@ -53,4 +63,7 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ addToTail: linear. Tried to refactor later to make it constant but ran out of time
+ removeHead: constant O(1)
+ contains: linear. Has to traverse entire list.
  */
