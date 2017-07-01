@@ -8,10 +8,16 @@ var LinkedList = function() {
       list.head = Node(value);
       list.tail = Node(value);
     } else {
-      list.tail = Node(value);
-      list.head.next = list.tail;
+      var current = list.head;
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = Node(value);
+      list.tail = current.next;
     }
   };
+
+
 
   list.removeHead = function() {
     if (list.head !== null) {
@@ -44,7 +50,6 @@ var Node = function(value) {
 
   node.value = value;
   node.next = null;
-
   return node;
 };
 

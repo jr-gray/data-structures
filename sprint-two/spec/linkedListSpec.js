@@ -51,5 +51,19 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+  it('should be able to access next node', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.addToTail(8);
+    expect(linkedList.head.next.value).to.equal(5);
+  });
+
+  it('should be able to access prev node', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.removeHead();
+    expect(linkedList.contains(4)).to.equal(false);
+  });
+    
   // add more tests here to test the functionality of linkedList
 });
