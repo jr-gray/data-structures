@@ -62,10 +62,10 @@ HashTable.prototype.count = function(k) {
 /*
  * Complexity: What is the time complexity of the above functions?
 
- HashTable insert: O(n) or constant. The function goes to the specific bucket immediately because it's in an array (location is known).
+ HashTable insert: O(1) or constant. The function goes to the specific bucket immediately because it's in an array (location is known).
   Then if the key exists already, it gets removed. Finally, the new key:value is pushed to the end, which is constant time.
 
- HashTable retrieve: O(n) / constant. Goes to specific bucket and loops over it, retrieving the key:value if it exists.
+ HashTable retrieve: O(1) / constant. Goes to specific bucket and loops over it, retrieving the key:value if it exists.
 
  HashTable remove: Same as the two above.
  */
