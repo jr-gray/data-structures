@@ -43,6 +43,20 @@ HashTable.prototype.remove = function(k) {
   }
 };
 
+HashTable.prototype.count = function(k) {
+  var index = getIndexBelowMaxForKey(k, this._limit);
+  var bucket = this._storage.get(index);
+  var count = 0;
+
+  for (var i = 0; i < bucket.length; i++) {
+    if (bucket[i][0] === k) {
+      count++;
+    }
+  }
+  return count;
+
+};
+
 
 
 /*

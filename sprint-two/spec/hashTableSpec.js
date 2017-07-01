@@ -47,6 +47,13 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should not contain each key more than once', function() {
+    hashTable.insert('Steven', 'Tyler');
+    hashTable.insert('Steven', 'Seagal');
+    hashTable.insert('Steven', 'Jackson');
+    expect(hashTable.count('Steven')).to.equal(1);
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {
