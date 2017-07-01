@@ -1,37 +1,35 @@
 var Set = function() {
-  var set = Object.create(setPrototype);
-  set._storage = [];
+	var set = Object.create(setPrototype);
+	set._storage = {};
   return set;
 };
 
 var setPrototype = {};
 
 setPrototype.add = function(item) {
-	this._storage.push(item);
+	this._storage[item] = item;
 };
 
 setPrototype.contains = function(item) {
-	if (this._storage.length > 0) {
-		for (var i = 0; i < this._storage.length; i++) {
-			if (this._storage[i] === item) {
-				return true;
-			}
-		}
-	}
-	return false;
+	return this._storage.hasOwnProperty(item);
 };
 
 setPrototype.remove = function(item) {
-	if (this._storage.length > 0) {
-		for (var i = 0; i < this._storage.length; i++) {
-			if (this._storage[i] === item) {
-				this._storage.splice(i, 1);
-			}
-		}
-	}
-	return null;
+	delete this._storage[item];
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
+with array implementation:
+
+ add: O(1), utilizes array.push
+ contains: O(n)
+ remove: O(n)
+
+with hash table implementation:
+
+ add. O(1)
+ contains: O(1)
+ remove: O(1)
+
  */
